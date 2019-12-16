@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+spec:
+  selector:
+    matchLabels:
+      component: web
+  replicas: 3
+  
+  template:
+    metadata:
+      labels:
+        component: web
+    spec:
+      containers:
+        - name: hello-world
+          image: k8s.gcr.io/echoserver:1.10
+          ports:
+            - containerPort: 8080
+              protocol: TCP
