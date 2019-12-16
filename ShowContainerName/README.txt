@@ -1,4 +1,4 @@
-The test on this folder creates a very simple kubernetes cluster with one NodePort service and a deployment with three containers with a web application that returns some data from the host, including the host name which is the name of the pod attending the call.
+The test on this folder creates a very simple kubernetes cluster with one NodePort service and a deployment with three containers with a web application that returns some data from the host, including the host name which is the name of the pod attending the call. The objective of the test is to see how the NodePort component balances traffic when concurrent request come.
 
 There is also a power shell script that runs 200 requests against the web app in concurrent backgroun jobs and stores the host name that has attended each request in a file called RespondingHostName.txt that is created during the process. The results show a great rotation on the pod that attends the calls.
 
