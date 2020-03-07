@@ -1,0 +1,27 @@
+version: '3'
+services:
+  postgres:
+    image: 'postgres:latest'
+    container_name: "my_postgres"
+    environment:
+      POSTGRES_PASSWORD: postgress_password       
+    restart: 'always'
+    volumes:
+      - my_dbdata:/var/lib/postgresql/data    
+  tweeter_bot: 
+    build: 
+      dockerfile: Docker
+      context: ./app
+    container_name: "tweeter_bot"      
+    volumes:
+      - /app/node_modules
+      - .:/app
+    environment:
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgress_password
+      - PGPORT=5432          
+
+volumes:
+  my_dbdata:
